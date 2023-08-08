@@ -1,37 +1,41 @@
 import Card from "./Card";
-import { useState } from 'react';
+import { useState } from "react";
 
+const Body = () => {
+  const [listData, setListData] = useState([]);
 
-const Body = () =>{
-    
+  const [inputData, setInputData] = useState("");
 
-  const [add, setAdd] = useState(0);
-    
+  return (
+    <div className="Body">
+      <div className="text-box">
+        <input
+          type="text"
+          className="inpt"
+          value={inputData}
+          onChange={(e) => {
+            setInputData(e.target.value);
+          }}
+        />
 
-
-
-      return(
-         <div className="Body">
-          <div className="text-box">
-              <input className="inpt"/>
-              
-              <button className="add-btn">Add</button>
-
-              
-          </div>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
-          
-         </div>
-      )
+        <button
+          className="add-btn"
+          onClick={() => {
+            setListData((listData) => [...listData, inputData]);
+            setInputData("");
+          }}
+        >
+          Add
+        </button>
+      </div>
+      <div className="card-box">
+        {listData.map((l, index) => (
+          <Card key={index} list={l} />
+        ))}
+        
+      </div>
+    </div>
+  );
 };
 
 export default Body;
