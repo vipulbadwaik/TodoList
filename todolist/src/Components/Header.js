@@ -1,9 +1,10 @@
 
 const Header = () =>{
     return(
-        <div className="Header">
+        <div 
+        className="bg-gray-950 text-white p-7 text-center ">
               
-            <h1>ToDo-List</h1>
+            <h1 className="font-bold text-lg">ToDo-List</h1>
 
         </div>
     )
